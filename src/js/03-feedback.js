@@ -14,14 +14,19 @@ const LOCAL_STORAGE = 'feedback-form-state';
 saveData();
 
 function onFormSubmit(e) {
-   e.preventDefault();
-  const formDATA = {
-    email: refs.email.value,
-    message: refs.textarea.value,
-  }
-    console.log(formDATA);
-    refs.form.reset();
-  localStorage.removeItem(LOCAL_STORAGE);
+    e.preventDefault();
+    if (refs.email.value === '' || refs.textarea.value.trim() === '') {
+        alert('Please fill all field')
+    }
+    else {
+        const formDATA = {
+            email: refs.email.value,
+            message: refs.textarea.value,
+        }
+        console.log(formDATA);
+        refs.form.reset();
+        localStorage.removeItem(LOCAL_STORAGE);
+    }
 }
 
 
